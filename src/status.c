@@ -11,12 +11,16 @@
 
 #include "status.h"
 
-#include <stdlib.h>
+static _Thread_local enum status_code status_code = STATUS_CODE_OK; 
 
-int main(int arg_count, const char * args[]) {
-  if(get_status() == STATUS_CODE_OK) {
-    return EXIT_SUCCESS;
-  } else {
-    return EXIT_FAILURE;
-  }
+void set_status(enum status_code _status_code) {
+  status_code = _status_code;
+}
+
+enum status_code get_status() {
+  return status_code;
+}
+
+void clear_status() {
+  status_code = STATUS_CODE_OK;
 }

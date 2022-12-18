@@ -9,14 +9,34 @@
  * If not, see <https://www.gnu.org/licenses/>. 
  */
 
-#include "status.h"
+#ifndef STATUS_H
+#define STATUS_H
 
-#include <stdlib.h>
+/**
+ * A status code used to describe the general state of the program
+ */
+enum status_code {
+		  /**
+		   * Everything is OK
+		   */
+		  STATUS_CODE_OK
+};
 
-int main(int arg_count, const char * args[]) {
-  if(get_status() == STATUS_CODE_OK) {
-    return EXIT_SUCCESS;
-  } else {
-    return EXIT_FAILURE;
-  }
-}
+/**
+ * Sets the status code for this thread
+ * \param status_code: the status code to set
+ */
+void set_status(enum status_code status_code);
+
+/**
+ * Gets the status code from this thread
+ * \returns the status code associated with this thread
+ */
+enum status_code get_status();
+
+/**
+ * Clears the status code for this thread
+ */
+void clear_status();
+
+#endif

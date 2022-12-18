@@ -11,6 +11,7 @@ AC_CONFIG_HEADERS([config.h])
 AC_PROG_CC
 
 # Checks for libraries.
+AX_PTHREAD([], [AC_ERROR([pthread library not found])])
 
 # Checks for header files.
 AC_CHECK_HEADERS([stdlib.h])
